@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #34495e;
+    color: white;
+}
+
+.content {
+    width: 100%;
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(63, 100, 211);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header h1 {
+    color: white;
+    font-size: 2rem;
+    text-align: left;
+    margin-left: 11%;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.info {
+    width: 45%;
+}
+
+.info h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.info ul {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+.info ul li {
+    margin-bottom: 10px;
+}
+
+.social {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: left;
+}
+
+.social a {
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social a:hover {
+    color: rgb(255, 215, 0); /* Cor de destaque ao passar o mouse */
+}
+
+.login {
+    background-color: whitesmoke;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    width: 45%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login h2 {
+    margin-bottom: 10px;
+}
+
+.login input[type="email"],
+.login input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.check label {
+    margin-left: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.buttons input[type="submit"],
+.buttons .btn-new-account {
+    display: inline-block;
+    background-color: #571aad;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    width: 48%;
+}
+
+.buttons input[type="submit"]:hover {
+    background-color: #3e107d;
+}
+
+.buttons .btn-new-account {
+    background-color: rgb(187, 121, 132); /* Cor verde do WhatsApp */
+}
+
+.buttons .btn-new-account:hover {
+    background-color: #1da851; /* Cor mais escura ao passar o mouse */
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .info, .login {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .buttons input[type="submit"],
+    .buttons .btn-new-account {
+        width: 100%;
+    }
+}
+
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+#password {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+#toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 1;
+    padding: 0;
+}

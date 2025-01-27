@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "lockdown": "^0.0.5",
+    "moment": "^2.30.1",
+    "pg": "^8.13.1"
+  }
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - DriveHub</title>
+    <link rel="stylesheet" href="../CSS/index.css">    <link rel="shortcut icon" href="../../assets/volante.png" type="image/x-icon">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>DriveHub</h2>
+        <div class="user-info">
+            <lord-icon src="https://cdn.lordicon.com/fmasbomy.json" trigger="hover" style="width:120px;height:120px"></lord-icon>
+            <p id="user-name" style="text-align: center;">Carregando...</p>
+        </div>
+        <nav>
+            <a href="./index.html" class="menu-title">Inicio</a>
+            <div></div>
+
+            <a href="#" class="menu-title">Cadastro</a>
+            <div class="submenu">
+                <a href="./Cadastros/alunos.html">Alunos</a>
+                <a href="./Cadastros/instrutores.html">Instrutores</a>
+                <a href="./Cadastros/veiculos.html">Veículos</a>
+                <a href="./Cadastros/veiculos.html">Dispositivos</a>
+            </div>
+            
+            <a href="#" class="menu-title">Aulas Práticas</a>
+            <div class="submenu">
+                <a href="./AulasP/PRenach.html">Processo Renach</a>
+                <!--<a href="#">Agendar Aula</a>-->
+                <a href="./AulasP/ConsultarAulas.html">Consultar Aulas</a>
+                <a href="./AulasP/Relatório.html">Relatório</a>
+            </div>
+
+            <a href="./Exames/exames.html" class="menu-title" >Exames</a>
+            <div></div>
+
+            <a href="#" class="menu-title">Financeiro</a>
+            <a href="#" class="submenu menu-title">Saldo Avulso</a>
+            <div class="submenu">
+                <a href="./Financeiro/Guia.html">Guia</a>
+                <a href="./Financeiro/transferencia.html">Transferência</a>
+                <a href="./Financeiro/relatorio.html">Relatório</a>
+            </div>
+
+            <a href="./" class="menu-title">Suporte</a>
+            <div></div>
+            <a href="#" class="menu-title">Configurações</a>
+            <div class="submenu">
+                <a href="./">Empresa</a>
+                <a href="./">Usuários</a>
+            </div>
+
+            <a href="#" class="menu-title" id="logoff" onclick="logoff(); return false;">Sair</a>
+        </nav>
+    </div>
+
+    <div class="content">
+        <header>
+            <h1 id="inicio">DriveHub / Dashboard</h1>
+            <div class="warnings">
+                <p>O Sistema DriveHub é um aplicativo para monitoramento de aulas, que atualmente está em desenvolvimento.</p>
+            </div>
+        </header>
+    </div>
+
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <script src="../JS/geral.js"></script>
+    <script>
+    function logoff() {
+    localStorage.removeItem("userName");
+    window.location.href = "./login.html"; 
+     }
+    </script>
+</body>
+</html>
