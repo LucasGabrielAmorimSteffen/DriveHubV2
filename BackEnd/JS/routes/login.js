@@ -19,8 +19,10 @@ async function login(req, res) {
 
     try {
         const query = `
-            SELECT nome_usuario 
-            FROM tusuarios 
+          SELECT id_usuario, 
+                 nome_usuario,
+                 id_empresa 
+            FROM tusuarios  
             WHERE email_usuario = $1 AND senha_usuario = $2
         `;
         const result = await pool.query(query, [email, password]);
@@ -29,6 +31,7 @@ async function login(req, res) {
             res.json({
                 success: true,
                 userName: result.rows[0].nome_usuario,
+                id_usuario: result.rows[0].id_usuario,
             });
         } else {
             res.status(401).json({
