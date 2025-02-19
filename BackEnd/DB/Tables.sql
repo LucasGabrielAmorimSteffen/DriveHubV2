@@ -1,49 +1,35 @@
--- Criação de Tabela Usuarios
-CREATE TABLE TUSUARIOS (
-    id_usuario SERIAL PRIMARY KEY,
-    nome_usuario VARCHAR(100) NOT NULL,
-    email_usuario VARCHAR(255) UNIQUE NOT NULL,
-    senha_usuario VARCHAR(255) NOT NULL,
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    id_empresa SERIAL REFERENCES TEmpresa (id_empresa),
-    licenca_acesso VARCHAR(15) UNIQUE NOT NULL
+-- Tabela TEmpresa
+CREATE TABLE tempresa (
+	id_empresa serial4 NOT NULL,
+	nome_empresa varchar(150) NOT NULL,
+	cnpj_empresa varchar(19) NOT NULL,
+	logradouro varchar(255) NULL,
+	telefone_empresa varchar(15) NULL,
+	email_empresa varchar(255) NULL,
+	data_criacao timestamp DEFAULT CURRENT_TIMESTAMP NULL,
+	fantasia_empresa varchar(150) NOT NULL,
+	numero_endereco varchar(5) NULL,
+	bairro_endereco varchar(50) NULL,
+	CONSTRAINT tempresa_cnpj_empresa_key UNIQUE (cnpj_empresa),
+	CONSTRAINT tempresa_email_empresa_key UNIQUE (email_empresa),
+	CONSTRAINT tempresa_fantasia_empresa_key UNIQUE (fantasia_empresa),
+	CONSTRAINT tempresa_pkey PRIMARY KEY (id_empresa)
 );
-
--- Criação de tabela Veiculos
-CREATE TABLE TVeiculos (
-    id_veiculo SERIAL PRIMARY KEY,
-    modelo VARCHAR(100) NOT NULL,
-    marca VARCHAR(50) NOT NULL,
-    ano_fabricacao INT NOT NULL,
-    placa VARCHAR(7) UNIQUE NOT NULL,
-    data_aquisicao DATE NOT NULL,
-    status VARCHAR(50) DEFAULT 'ativo',
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- Tabela TUsuarios
+CREATE TABLE tusuarios (
+	id_usuario serial4 NOT NULL,
+	nome_usuario varchar(100) NOT NULL,
+	email_usuario varchar(255) NOT NULL,
+	senha_usuario varchar(255) NOT NULL,
+	data_criacao timestamp DEFAULT CURRENT_TIMESTAMP NULL,
+	id_empresa serial4 NOT NULL,
+	licenca_acesso varchar(15) NOT NULL,
+	CONSTRAINT tusuarios_email_usuario_key UNIQUE (email_usuario),
+	CONSTRAINT tusuarios_licenca_acesso_key UNIQUE (licenca_acesso),
+	CONSTRAINT tusuarios_pkey PRIMARY KEY (id_usuario),
+	CONSTRAINT tusuarios_id_empresa_fkey FOREIGN KEY (id_empresa) REFERENCES tempresa(id_empresa)
 );
-
--- Criação de tabela Instrutores
-CREATE TABLE TInstrutores (
-    id_instrutor SERIAL PRIMARY KEY,
-    nome_instrutor VARCHAR(100) NOT NULL,
-    cpf_instrutor VARCHAR(11) UNIQUE NOT NULL,
-    data_nascimento DATE NOT NULL,
-    telefone VARCHAR(15),
-    email_instrutor VARCHAR(255),
-    data_admissao DATE NOT NULL,
-    status VARCHAR(50) DEFAULT 'ativo',
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- Criação de tabela Dispositivos
-CREATE TABLE TDispositivos (
-    id_dispositivo SERIAL PRIMARY KEY,
-    descricao VARCHAR(255) NOT NULL,
-    tipo VARCHAR(50) NOT NULL,
-    status VARCHAR(50) DEFAULT 'ativo',
-    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- Criação de tabela Alunos
+-- Tabela TAlunos
 CREATE TABLE talunos (
 	id_aluno serial4 NOT NULL,
 	nome_aluno varchar(255) NULL,
@@ -60,88 +46,108 @@ CREATE TABLE talunos (
 	uf_nascimento varchar(2) NULL,
 	nacionalidade varchar(100) NULL,
 	foto_aluno bytea NULL,
+	telefone varchar(21) NULL,
+	email varchar(255) NULL,
+	ativo bool NULL,
 	CONSTRAINT talunos_pkey PRIMARY KEY (id_aluno)
 );
-
--- Criação de Tabela Empresa
-CREATE TABLE TEmpresa (
-    id_empresa SERIAL PRIMARY KEY,
-    nome_empresa VARCHAR(150) NOT NULL,
-    cnpj_empresa VARCHAR(14) UNIQUE NOT NULL,
-    endereco_empresa VARCHAR(255),
-    telefone_empresa VARCHAR(15),
-    email_empresa VARCHAR(255) UNIQUE,
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- Tabela Tdispositivos
+CREATE TABLE tdispositivos (
+	id_dispositivo serial4 NOT NULL,
+	descricao varchar(255) NOT NULL,
+	tipo varchar(50) NOT NULL,
+	status varchar(50) DEFAULT 'ativo'::character varying NULL,
+	data_cadastro timestamp DEFAULT CURRENT_TIMESTAMP NULL,
+	CONSTRAINT tdispositivos_pkey PRIMARY KEY (id_dispositivo)
 );
-
--- Criação de Tabela InfoAulas
-CREATE TABLE TAulasInfo (
-    id_aula SERIAL PRIMARY KEY,
-    id_aluno INT NOT NULL REFERENCES TAlunos(id_aluno),
-    id_instrutor INT NOT NULL REFERENCES TInstrutores(id_instrutor),
-    id_veiculo INT REFERENCES TVeiculos(id_veiculo),
-    data_aula TIMESTAMP NOT NULL,
-    duracao INT NOT NULL, -- duração em minutos
-    status VARCHAR(50) DEFAULT 'pendente',
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- Tabela Tinstrutores
+CREATE TABLE tinstrutores (
+	id_instrutor serial4 NOT NULL,
+	nome_instrutor varchar(100) NOT NULL,
+	cpf_instrutor varchar(11) NOT NULL,
+	data_nascimento date NOT NULL,
+	telefone varchar(15) NULL,
+	email_instrutor varchar(255) NULL,
+	data_admissao date NOT NULL,
+	status varchar(50) DEFAULT 'ativo'::character varying NULL,
+	data_criacao timestamp DEFAULT CURRENT_TIMESTAMP NULL,
+	CONSTRAINT tinstrutores_cpf_instrutor_key UNIQUE (cpf_instrutor),
+	CONSTRAINT tinstrutores_pkey PRIMARY KEY (id_instrutor)
 );
-
--- Criação de Tabela AulasFotos
-CREATE TABLE TAulasFotos(
-       id_aula INT NOT NULL REFERENCES TAulasInfo(id_aula),
-       id_aluno INT NOT NULL REFERENCES talunos (id_aluno),
-       nome_aluno VARCHAR(255) NOT NULL references TAlunos(nome_aluno), 
-       id_instrutor INT NOT NULL REFERENCES TInstrutores (id_instrutor),
-       id_veiculo INT NOT NULL REFERENCES  TVeiculos (id_veiculo),
-       data_aula TIMESTAMP NOT NULL,
-       duracao INT NOT NULL, -- duração em minutos   
-       foto_istrutorIncial Bytea NOT NULL,
-       foto_alunoInicial Bytea NOT NULL,
-       video_aula Bytea NOT NULL,
-       foto_instrutorFinal Bytea NOT NULL,
-       foto_alunoFinal Bytea NOT NULL
+-- Tabela TSaldos
+CREATE TABLE tsaldos (
+	id_saldo serial4 NOT NULL,
+	id_aluno int4 NOT NULL,
+	saldo_atual numeric(10, 2) DEFAULT 0.00 NOT NULL,
+	data_atualizacao timestamp DEFAULT CURRENT_TIMESTAMP NULL,
+	CONSTRAINT tsaldos_pkey PRIMARY KEY (id_saldo)
 );
-
--- Criação de Tabela Video Aulas
-CREATE TABLE TAulasVid (
-       id_aula INT NOT NULL REFERENCES TAulasInfo(id_aula),
-       id_aluno INT NOT NULL REFERENCES  TAlunos(id_aluno),
-       nome_aluno VARCHAR(255) NOT NULL references TAlunos(nome_aluno), 
-       id_instrutor INT NOT NULL REFERENCES TInstrutores (id_instrutor),
-       id_veiculo INT NOT NULL REFERENCES  TVeiculos (id_veiculo),
-       data_aula TIMESTAMP NOT NULL,
-       duracao INT NOT NULL, -- duração em minutos   
-       status VARCHAR(50) DEFAULT 'pendente' 
+-- Tabela TTransferencias
+CREATE TABLE ttransferencias (
+	id_transferencia serial4 NOT NULL,
+	id_aluno_origem int4 NOT NULL,
+	id_aluno_destino int4 NOT NULL,
+	valor numeric(10, 2) NOT NULL,
+	data_transferencia timestamp DEFAULT CURRENT_TIMESTAMP NULL,
+	descricao varchar(255) NULL,
+	CONSTRAINT ttransferencias_pkey PRIMARY KEY (id_transferencia)
 );
-
--- Criação de Tabela Saldos
-CREATE TABLE TSaldos (
-    id_saldo SERIAL PRIMARY KEY,
-    id_aluno INT NOT NULL REFERENCES TAlunos(id_aluno),
-    saldo_atual DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
-    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- Tabela TVeiculos
+CREATE TABLE tveiculos (
+	id_veiculo serial4 NOT NULL,
+	modelo varchar(100) NOT NULL,
+	marca varchar(50) NOT NULL,
+	ano_fabricacao int4 NOT NULL,
+	placa varchar(7) NOT NULL,
+	data_aquisicao date NOT NULL,
+	status varchar(50) DEFAULT 'ativo'::character varying NULL,
+	data_criacao timestamp DEFAULT CURRENT_TIMESTAMP NULL,
+	CONSTRAINT tveiculos_pkey PRIMARY KEY (id_veiculo),
+	CONSTRAINT tveiculos_placa_key UNIQUE (placa)
 );
-
--- Criação de Tabela Transferências
-CREATE TABLE TTransferencias (
-    id_transferencia SERIAL PRIMARY KEY,
-    id_aluno_origem INT NOT NULL REFERENCES TAlunos(id_aluno),
-    id_aluno_destino INT NOT NULL REFERENCES TAlunos(id_aluno),
-    valor DECIMAL(10, 2) NOT NULL,
-    data_transferencia TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    descricao VARCHAR(255)
+-- Tabela TAulasInfo
+CREATE TABLE taulasinfo (
+	id_aula serial4 NOT NULL,
+	id_aluno int4 NOT NULL,
+	id_instrutor int4 NOT NULL,
+	id_veiculo int4 NULL,
+	data_aula timestamp NOT NULL,
+	duracao int4 NOT NULL,
+	status varchar(50) DEFAULT 'pendente'::character varying NULL,
+	data_criacao timestamp DEFAULT CURRENT_TIMESTAMP NULL,
+	CONSTRAINT taulasinfo_pkey PRIMARY KEY (id_aula),
+	CONSTRAINT taulasinfo_id_instrutor_fkey FOREIGN KEY (id_instrutor) REFERENCES tinstrutores(id_instrutor),
+	CONSTRAINT taulasinfo_id_veiculo_fkey FOREIGN KEY (id_veiculo) REFERENCES tveiculos(id_veiculo)
 );
-
-
-
--- DROP DE TODAS AS TABELAS DO BANCO;
-DROP TABLE public.tempresa;
-DROP TABLE public.tveiculos;
-DROP TABLE public.ttransferencias;
-DROP TABLE public.tsaldos;
-DROP TABLE public.tinstrutores;
-DROP TABLE public.tdispositivos;
-DROP TABLE public.taulas;
-DROP TABLE public.talunos; 
-
-COMMIT WORK;
+-- Tabela TAulasVid
+CREATE TABLE taulasvid (
+	id_aula int4 NOT NULL,
+	id_aluno int4 NOT NULL,
+	nome_aluno varchar(255) NOT NULL,
+	id_instrutor int4 NOT NULL,
+	id_veiculo int4 NOT NULL,
+	data_aula timestamp NOT NULL,
+	duracao int4 NOT NULL,
+	status varchar(50) DEFAULT 'pendente'::character varying NULL,
+	CONSTRAINT taulasvid_id_aula_fkey FOREIGN KEY (id_aula) REFERENCES taulasinfo(id_aula),
+	CONSTRAINT taulasvid_id_instrutor_fkey FOREIGN KEY (id_instrutor) REFERENCES tinstrutores(id_instrutor),
+	CONSTRAINT taulasvid_id_veiculo_fkey FOREIGN KEY (id_veiculo) REFERENCES tveiculos(id_veiculo)
+);
+-- Tabela TAulasFotos
+CREATE TABLE taulasfotos (
+	id_aula int4 NOT NULL,
+	id_aluno int4 NOT NULL,
+	nome_aluno varchar(255) NOT NULL,
+	id_instrutor int4 NOT NULL,
+	id_veiculo int4 NOT NULL,
+	data_aula timestamp NOT NULL,
+	duracao int4 NOT NULL,
+	foto_istrutorincial bytea NOT NULL,
+	foto_alunoinicial bytea NOT NULL,
+	video_aula bytea NOT NULL,
+	foto_instrutorfinal bytea NOT NULL,
+	foto_alunofinal bytea NOT NULL,
+	CONSTRAINT taulasfotos_id_aula_fkey FOREIGN KEY (id_aula) REFERENCES taulasinfo(id_aula),
+	CONSTRAINT taulasfotos_id_instrutor_fkey FOREIGN KEY (id_instrutor) REFERENCES tinstrutores(id_instrutor),
+	CONSTRAINT taulasfotos_id_veiculo_fkey FOREIGN KEY (id_veiculo) REFERENCES tveiculos(id_veiculo)
+);
