@@ -12,16 +12,15 @@ async function buscarAluno(req, res) {
 
     try {
         let query = 
-`SELECT nome_aluno, 
-       cpf_aluno, 
-       renach, 
-       encode(foto_aluno, 'base64') AS foto_aluno, 
-       telefone, 
-       data_nascimento, 
-       email, 
-       ativo 
- FROM talunos 
-WHERE`;
+       `SELECT nome_aluno, 
+               cpf_aluno, 
+               renach, 
+               encode(foto_aluno, 'base64') AS foto_aluno, 
+               telefone, 
+               data_nascimento, 
+               email, 
+               ativo 
+          FROM talunos`;
         let values = [];
 
         if (cpf && renach) {
@@ -56,7 +55,5 @@ WHERE`;
         });
     }
 }
-
-
 
 module.exports = { buscarAluno };

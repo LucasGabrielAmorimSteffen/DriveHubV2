@@ -13,12 +13,12 @@ async function DadosEmpresa(req, res) {
     try {
         const query = `
             SELECT 
-                E.id_empresa, 
-                E.nome_empresa, 
-                E.cnpj_empresa, 
-                E.telefone_empresa, 
-                E.email_empresa,
-                E.fantasia_empresa,
+                e.id_empresa , 
+                e.nome_empresa, 
+                e.fantasia_empresa ,
+                e.cnpj_empresa , 
+                e.telefone_empresa , 
+                e.email_empresa ,               
                 (E.logradouro || ' N° ' || E.numero_endereco || ' ' || E.bairro_endereco) AS endereco
             FROM tempresa E
             INNER JOIN tusuarios U

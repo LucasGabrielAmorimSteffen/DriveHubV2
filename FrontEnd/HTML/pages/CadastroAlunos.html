@@ -58,11 +58,41 @@
             <a href="#" class="menu-title" id="logoff" onclick="logoff(); return false;">Sair</a>
         </nav>
     </div>
-    <div class="content">
+    <div class="container">
             <h1 id="inicio">DriveHub / Cadastro de Alunos</h1>
-    </div>
-    <div class="form">
+        <div class="toolbar">
+            <input type="text" placeholder="🔍 Pesquisar..." class="search">
+            <div class="items-per-page">
+                <label for="items">Exibir:</label>
+                <select id="items">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="all">All</option>
+                </select>
+            </div>
+        </div>
 
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Renach</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="nameA"></td> <!-- adciionar nome aluno-->
+                    <td id="cpfA"></td> <!-- adicionar os cpf -->
+                    <td id="renachA"></td> <!-- adicionar os renach -->
+                    <td><span id="statusA" class="status active">Ativo</span></td>
+                    <td><button class="edit-btn">Editar</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 
