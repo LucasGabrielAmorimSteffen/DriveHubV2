@@ -58,38 +58,7 @@
             <a href="#" class="menu-title" id="logoff" onclick="logoff(); return false;">Sair</a>
         </nav>
     </div>
-    <div class="container">
-        <h1 id="inicio">DriveHub / Cadastro de Alunos</h1>
-        <div class="toolbar">
-            <input type="text" placeholder="🔍 Pesquisar..." class="search">
-            <div class="items-per-page">
-                <label for="items">Exibir:</label>
-                <select id="items">
-                    <option value="10">10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="all">All</option>
-                </select>
-            </div>
-        </div>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Renach</th>
-                    <th>Status</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- As linhas da tabela serão preenchidas dinamicamente pelo JavaScript -->
-            </tbody>
-        </table>
-    </div>
-
-
+    
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script src="../../js/scripts/alunos.js"></script>
     <script src="../../js/geral.js"></script>
@@ -98,10 +67,6 @@
     localStorage.removeItem("userName");
     localStorage.removeItem("id_usuario")
     window.location.href = "../../html/login.html"; 
-     }
-
-     function edit(){
-        window.location.href = "./editaraluno.html"
      }
     </script>
 </body>

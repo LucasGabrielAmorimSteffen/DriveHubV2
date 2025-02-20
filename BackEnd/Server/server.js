@@ -1,9 +1,11 @@
 const express      = require("express");
 const cors         = require ("cors");
 const bodyParser   = require("body-parser");
-const { login }    = require("../JS/routes/login")
-const { buscarAluno } = require('../JS/routes/buscarAluno');
-const { DadosEmpresa} = require('../JS/routes/dadosempresa')
+const { login }    = require("../js/routes/login")
+const { searchstudent } = require('../js/routes/searchstudent');
+const { DadosEmpresa} = require('../js/routes/dadosempresa')
+const { getAllStudents } = require('../js/routes/getAllStudents'); 
+
 
 const app = express();
 app.use(cors({origin: "*"}));
@@ -14,7 +16,10 @@ app.use(bodyParser.json());
 app.post("/login", login);
 
 // Rota de busca de alunos
-app.post("/buscar-aluno" , buscarAluno);
+app.post("/buscar-aluno" , searchstudent);
+
+// Rota para todos alunos.
+app.get("/todos-alunos", getAllStudents); 
 
 // Rota para buscar empresa
 app.post("/DadosEmpresa", DadosEmpresa)
