@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Alunos - DriveHub</title>
-    <link rel="stylesheet" href="../CSS/CadastroAlunos.css">    <link rel="shortcut icon" href="../../assets/volante.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../assets/volante.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../css/themes/general.css">
+    <link rel="stylesheet" href="../../css/CadastroAlunos.css">
 </head>
 <body>
     <div class="sidebar">
@@ -12,14 +14,15 @@
         <div class="user-info">
             <lord-icon src="https://cdn.lordicon.com/fmasbomy.json" trigger="hover" style="width:120px;height:120px"></lord-icon>
             <p id="user-name" style="text-align: center;">Carregando...</p>
+            <p id="emp-id" style="text-align: center; font-size: 15px;">Carregando...</p>
         </div>
         <nav>
-            <a href="./index.html" class="menu-title">Inicio</a>
+            <a href="../index.html" class="menu-title">Inicio</a>
             <div></div>
 
             <a href="#" class="menu-title">Cadastro</a>
             <div class="submenu">
-                <a href="./CadastroAlunos.html">Alunos</a>
+                <a href="../pages/CadastroAlunos.html">Alunos</a>
                 <a href="./Cadastros/instrutores.html">Instrutores</a>
                 <a href="./Cadastros/veiculos.html">Veículos</a>
                 <a href="./Cadastros/veiculos.html">Dispositivos</a>
@@ -41,7 +44,7 @@
             <div class="submenu">
                 <a href="./Financeiro/Guia.html">Guia</a>
                 <a href="./Financeiro/transferencia.html">Transferência</a>
-                <a href="./Financeiro/relatorio.html">Relatório</a>
+                <a href="../../">Relatório</a>
             </div>
 
             <a href="./" class="menu-title">Suporte</a>
@@ -55,22 +58,21 @@
             <a href="#" class="menu-title" id="logoff" onclick="logoff(); return false;">Sair</a>
         </nav>
     </div>
-
     <div class="content">
-        <header>
             <h1 id="inicio">DriveHub / Cadastro de Alunos</h1>
-            <div class="warnings">
-                <h2>Listagem de Alunos</h2>
-            </div>
-        </header>
+    </div>
+    <div class="form">
+
     </div>
 
+
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
-    <script src="../JS/geral.js"></script>
+    <script src="../../js/geral.js"></script>
     <script>
     function logoff() {
     localStorage.removeItem("userName");
-    window.location.href = "./login.html"; 
+    localStorage.removeItem("id_usuario")
+    window.location.href = "../../html/login.html"; 
      }
     </script>
 </body>

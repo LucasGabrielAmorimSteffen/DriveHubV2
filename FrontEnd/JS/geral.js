@@ -59,7 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function logoff() {
     localStorage.removeItem("userName");
-    window.location.href = "../login.html"; 
+    localStorage.removeItem("id_usuario")
+    window.location.href = "../../html/login.html"; 
 }
 
 const menuTitles = document.querySelectorAll('.menu-title');
