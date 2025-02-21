@@ -72,4 +72,3 @@ function filtrarAlunos(texto) {
  
     carregarTodosAlunos();
 });
-

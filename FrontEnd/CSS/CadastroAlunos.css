@@ -1,5 +1,6 @@
 body {
     background-color: #ebe6e6;
+    overflow: hidden;
 }
 
 /*Style Alunos*/
@@ -10,6 +11,7 @@ body {
     margin: 30px;
     background: white;
     padding: 20px;
+    position: sticky;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
