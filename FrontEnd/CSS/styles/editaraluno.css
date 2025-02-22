@@ -1,158 +1,77 @@
-/* Estilos específicos para a página de edição de aluno */
-
 body {
-    background-color: #ebe6e6;
+    font-family: Calibri, Tahoma, Arial;
+}
+
+.TabControl {
+    width: 100%;
     overflow: hidden;
+    height: 400px;
 }
 
-.container {
-    width: 80%;
-    height: auto;
-    margin: 30px;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.TabControl #header {
+    width: 100%;
+    border: solid 1px;
+    overflow: hidden;
+    cursor: pointer;
 }
 
-h2 {
-    margin-bottom: 20px;
-    color: #333;
+.TabControl #content {
+    width: 100%;
+    border: solid 1px;
+    overflow: hidden;
+    height: 100%;
 }
 
-.photo-placeholder {
+.TabControl .abas {
+    display: inline;
+}
+
+.TabControl .abas li {
+    float: left;
+}
+
+.tab {
     width: 100px;
-    height: 100px;
-    background-color: #ccc;
-    border-radius: 50%;
-    margin-bottom: 20px;
+    height: 30px;
+    border: solid 1px;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    padding-top: 5px;
+    background: #3A5FCD;
 }
 
-.data-section {
-    margin-bottom: 20px;
+.ativa {
+    width: 100px;
+    height: 30px;
+    border: solid 1px;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    padding-top: 5px;
+    background: #27408B;
 }
 
-.data-section h3 {
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-table th, table td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-table th {
-    background-color: #f4f4f4;
-    font-weight: bold;
-}
-
-.actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.save-button {
-    background-color: #28a745;
+.ativa span, .selected span {
     color: #fff;
 }
 
-.save-button:hover {
-    background-color: #218838;
+.TabControl #content {
+    background: #27408B;
 }
 
-.cancel-button {
-    background-color: #dc3545;
+.TabControl .conteudo {
+    width: 100%;
+    background: #27408B;
+    display: none;
+    height: 100%;
     color: #fff;
 }
 
-.cancel-button:hover {
-    background-color: #c82333;
-}
-
-/* Estilos para o grupo de CNH Social */
-.data-section .form-group {
-    display: flex;
-    align-items: center; 
-    margin-bottom: 10px;
-}
-
-.data-section .form-group input[type="radio"] {
-    margin-right: 10px; 
-    width: 16px;
-    height: 16px;
-    accent-color: #28a745; 
-    cursor: pointer;
-}
-
-.data-section .form-group label {
-    margin-bottom: 0;
-    font-weight: normal; 
-    cursor: pointer;
-}
-
-.data-section .form-group input[type="radio"]:hover {
-    opacity: 0.8;
-}
-
-.data-section .form-group input[type="radio"]:checked {
-    accent-color: #218838;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .container {
-        width: 100%;
-        margin: 10px;
-        padding: 10px;
-    }
-
-    .photo-placeholder {
-        width: 80px;
-        height: 80px;
-    }
-
-    .actions {
-        flex-direction: column;
-    }
-
-    button {
-        width: 100%;
-        margin-bottom: 10px;
-    }
+.selected {
+    width: 100px;
+    height: 30px;
+    border: solid 1px;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    padding-top: 5px;
+    background: #27408B;
 }
