@@ -6,7 +6,7 @@
     <title>Cadastro de Alunos - DriveHub</title>
     <link rel="shortcut icon" href="../../assets/volante.png" type="image/x-icon">
     <link rel="stylesheet" href="../../css/themes/general.css">
-    <link rel="stylesheet" href="../../css/CadastroAlunos.css">
+    <link rel="stylesheet" href="../../css/styles/CadastroAlunos.css">
 </head>
 <body>
     <div class="sidebar">
@@ -94,15 +94,14 @@
     <script src="../../js/scripts/alunos.js"></script>
     <script src="../../js/geral.js"></script>
     <script>
-    function logoff() {
-    localStorage.removeItem("userName");
-    localStorage.removeItem("id_usuario")
-    window.location.href = "../../html/login.html"; 
-     }
+function edit(nome, cpf, renach) {
+    sessionStorage.setItem("nameStudent", nome);
+    sessionStorage.setItem("CpfStudent", cpf);
+    sessionStorage.setItem("renachStud", renach);
+    
+    window.location.href = "./editaraluno.html";
+}
 
-     function edit(){
-        window.location.href = "./editaraluno.html"
-     }
     </script>
 </body>
 </html>

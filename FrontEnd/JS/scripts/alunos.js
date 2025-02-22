@@ -3,6 +3,23 @@ document.addEventListener("DOMContentLoaded", function() {
     const tableBody = document.querySelector("table tbody"); 
     let alunos = [];
 
+    document.addEventListener("DOMContentLoaded", function () {
+        const nomeInput = document.getElementById("nomeA");
+        const cpfInput = document.getElementById("cpfA");
+        const renachInput = document.getElementById("renachA");
+    
+        // Pegando os valores armazenados no sessionStorage
+        const nomeSalvo = sessionStorage.getItem("nameStudent");
+        const cpfSalvo = sessionStorage.getItem("CpfStudent");
+        const renachSalvo = sessionStorage.getItem("renachStud");
+    
+        // Preenchendo os campos automaticamente
+        if (nomeSalvo) nomeInput.value = nomeSalvo;
+        if (cpfSalvo) cpfInput.value = cpfSalvo;
+        if (renachSalvo) renachInput.value = renachSalvo;
+    });
+    
+    
     // Função para carregar todos os alunos
     function carregarTodosAlunos() {
      fetch("http://localhost:3000/todos-alunos")
@@ -35,25 +52,26 @@ document.addEventListener("DOMContentLoaded", function() {
     return `MT${renachLimpo}`;
     }
     function atualizarTabela(alunos) {
-       tableBody.innerHTML = "";
-
-       alunos.forEach(aluno => {
-        const row = document.createElement("tr");
-
-        const cpfFormatado = formatarCPF(aluno.cpf_aluno);
-        const renachFormatado = formatarRENACH(aluno.renach);
-
-        row.innerHTML = `
-            <td>${aluno.nome_aluno}</td>
-            <td>${cpfFormatado}</td>
-            <td>${renachFormatado}</td>
-            <td><span class="status ${aluno.ativo ? 'active' : 'inactive'}">${aluno.ativo ? "Ativo" : "Inativo"}</span></td>
-            <td><button class="edit-btn" onclick="edit(); return false;">Editar</button></td>
-        `;
-
-        tableBody.appendChild(row);
-    });
-}
+        tableBody.innerHTML = "";
+    
+        alunos.forEach(aluno => {
+            const cpfFormatado = formatarCPF(aluno.cpf_aluno);
+            const renachFormatado = formatarRENACH(aluno.renach);
+    
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${aluno.nome_aluno}</td>
+                <td>${cpfFormatado}</td>
+                <td>${renachFormatado}</td>
+                <td><span class="status ${aluno.ativo ? 'active' : 'inactive'}">${aluno.ativo ? "Ativo" : "Inativo"}</span></td>
+                <td><button class="edit-btn" onclick="edit('${aluno.nome_aluno}', '${cpfFormatado}', '${renachFormatado}')">Editar</button></td>
+            `;
+    
+            tableBody.appendChild(row);
+        });
+    }
+    
+    
 
     // Função para filtrar alunos conforme o texto digitado
 function filtrarAlunos(texto) {
