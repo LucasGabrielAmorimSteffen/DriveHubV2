@@ -1,9 +1,9 @@
 const pool = require("../utils/db");
 
 async function searchstudent(req, res) {
-    const { nome_aluno, cpf, renach } = req.body;
+    const { nome_aluno, cpf, renach, status } = req.body;
 
-    if (!nome_aluno && !cpf && !renach) {
+    if (!nome_aluno && !cpf && !renach && !status) {
         return res.status(400).json({
             success: false,
             message: "Por favor, forneça ao menos um campo: Nome, CPF ou RENACH."
@@ -35,6 +35,10 @@ async function searchstudent(req, res) {
         }
         if (renach) {
             conditions.push(`renach = $${conditions.length + 1}`);
+            values.push(renach);
+        }
+        if (status){
+            conditions.push(`ativo = $${conditions.length + 1}`);
             values.push(renach);
         }
 

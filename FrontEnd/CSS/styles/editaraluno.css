@@ -1,77 +1,150 @@
-body {
-    font-family: Calibri, Tahoma, Arial;
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.TabControl {
-    width: 100%;
-    overflow: hidden;
-    height: 400px;
+/* Container principal */
+.container {
+    width: 80%;
+    margin: 30px;
+    background: white;
+    padding: 20px;
+    position: sticky;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.TabControl #header {
-    width: 100%;
-    border: solid 1px;
-    overflow: hidden;
-    cursor: pointer;
+h2 {
+    text-align: left;
+    margin-bottom: 15px;
+    font-size: 22px;
 }
 
-.TabControl #content {
-    width: 100%;
-    border: solid 1px;
-    overflow: hidden;
-    height: 100%;
-}
-
-.TabControl .abas {
-    display: inline;
-}
-
-.TabControl .abas li {
-    float: left;
+/* Tabs */
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
 }
 
 .tab {
-    width: 100px;
-    height: 30px;
-    border: solid 1px;
+    padding: 10px 15px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
     border-radius: 5px 5px 0 0;
+    transition: 0.3s;
+}
+
+.tab:hover {
+    background-color: #e0e0e0;
+}
+
+.tab.active {
+    background: white;
+    border: 2px solid #ddd;
+    border-bottom: 0;
+}
+
+/* Estilização das seções */
+.form-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.photo-section {
+    flex: 1;
     text-align: center;
-    padding-top: 5px;
-    background: #3A5FCD;
+    margin-right: 20px;
 }
 
-.ativa {
-    width: 100px;
-    height: 30px;
-    border: solid 1px;
-    border-radius: 5px 5px 0 0;
-    text-align: center;
-    padding-top: 5px;
-    background: #27408B;
+.photo-box {
+    width: 200px;
+    height: 250px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
-.ativa span, .selected span {
-    color: #fff;
-}
-
-.TabControl #content {
-    background: #27408B;
-}
-
-.TabControl .conteudo {
+.photo-box img {
     width: 100%;
-    background: #27408B;
-    display: none;
     height: 100%;
-    color: #fff;
+    object-fit: cover;
 }
 
-.selected {
-    width: 100px;
-    height: 30px;
-    border: solid 1px;
-    border-radius: 5px 5px 0 0;
-    text-align: center;
-    padding-top: 5px;
-    background: #27408B;
+.data-section {
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+input, select {
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.cnh-social {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.cnh-social label {
+    margin-right: 10px;
+}
+
+/* Botões */
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn.save {
+    background: #3498db;
+    color: white;
+    margin-right: 10px;
+}
+
+.btn.cancel {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .form-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .photo-section {
+        margin-bottom: 15px;
+    }
 }
